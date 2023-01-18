@@ -8,18 +8,31 @@ const cupones = [
     { cupon: '23JKY', descuento: 10 },
     { cupon: 'TRTYU', descuento: 40 },
     { cupon: 'HGFDT', descuento: 33 },
-]
+];
+let validar;
 
 // Eventos ------------------------------
 btnCalcular.addEventListener('click', calcularDescuento);
 
 function calcularDescuento() {
-    const precio = document.querySelector('#price').value;
-    const descuento = document.querySelector('#discount').value;
+    const precio = Number(document.querySelector('#price').value);
 
-    if (precio == '' || descuento == '') {
-        alert('Faltan ingresar datos!');
+    if (!precio) {
+        alert('Falta ingresar el precio!');
     } else {
+        const numeroCupon = document.querySelector('#coupon').value;
+        var validar = cupones.find(function(articulo){
+            return articulo.cupon === numeroCupon;
+        });
+        let descuento;
+
+        if (validar) {
+            descuento = validar.descuento;
+        } else {
+            console.log('Cupon no encontrado');
+            descuento = 0;
+        }
+
         const importeDescontado = precio * (descuento / 100);
         const importeFinal = precio * ((100 - descuento) / 100);
 
