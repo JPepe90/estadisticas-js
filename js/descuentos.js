@@ -27,6 +27,7 @@ function calcularDescuento() {
         let descuento;
 
         if (validar) {
+            console.log('Cupon de descuento: ' + validar.descuento + '%');
             descuento = validar.descuento;
         } else {
             console.log('Cupon no encontrado');
