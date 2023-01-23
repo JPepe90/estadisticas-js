@@ -24,3 +24,26 @@ function calcularPromedio(array){
     return (sumatoria / (array.length))
 }
 
+function esPar(array) {
+    // if (array.length % 2) {
+    //     return false;
+    // } else {
+    //     return true;
+    // }
+    return !(lista.length % 2);
+}
+
+function esImpar(array) {
+    return (array.length % 2);
+}
+
+function calcularMediana(array) {
+    // detecto si la lista es par o impar
+    if (esImpar(array)) {
+        // tomo el valor del item central redondeado para abajo. Ej si array length = 7 --> recorto 3.5 a 3
+        return array[Math.trunc(array.length/2)];
+    } else {
+        // agarro los dos items del centro y les calculo el promedio
+        return calcularPromedio([array[(array.length/2)-1], array[(array.length/2)]]);
+    }
+}
